@@ -1667,8 +1667,8 @@ msgstr "Alter"
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:389
 #: /Users/msquare/workspace/projects/engelsystem/includes/view/User_view.php:64
-msgid "Hometown"
-msgstr "Wohnort"
+msgid "University"
+msgstr "Universität"
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:392
 #: /Users/msquare/workspace/projects/engelsystem/includes/view/User_view.php:30
@@ -2847,6 +2847,21 @@ msgstr ""
 "Bitte gib Dein geplantes Abreisedatum an, damit wir ein Gefühl für die Abbau-"
 "Planung bekommen."
 
+msgid "Mobile (only used for important problems)"
+msgstr "Handy (wird nur für wichtige Anrufe verwendet)"
+
+msgid "Please enter your last name."
+msgstr "Bitte gib Deinen Nachnamen ein."
+
+msgid "Please enter your first name."
+msgstr "Bitte gib Deinen Vornamen ein."
+
+msgid "Please enter your mobile number."
+msgstr "Bitte gib Deine Handynumber ein."
+
+msgid "Please enter your hometown."
+msgstr "Bitte gib Deine Universität ein."
+
 #: /Users/msquare/workspace/projects/engelsystem/includes/view/User_view.php:841
 #, php-format
 msgid ""
@@ -2861,8 +2876,8 @@ msgid ""
 "You are not marked as arrived. Please go to heaven's desk, get your angel "
 "badge and/or tell them that you arrived already."
 msgstr ""
-"Du bist nicht als angekommen markiert. Bitte gehe zur Himmelsverwaltung, "
-"hole Dein Badge ab und/oder erkläre ihnen, dass Du bereits angekommen bist."
+"Du bist nicht als angekommen markiert. Bitte melde dich bei der Helfikaverwaltung 
+unter helfer@wuerzburg18.de oder bei im Tagungsbüro (Fachschaftszimmer)."
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/view/User_view.php:878
 msgid "You need to specify a tshirt size in your settings!"
