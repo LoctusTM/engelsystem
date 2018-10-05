@@ -17,7 +17,7 @@ COPY config/ /app/config
 COPY db/ /app/db
 COPY includes/ /app/includes
 COPY public/ /app/public
-COPY --from=frontend /var/www/public/assets/ /app/public/assets
+COPY resources/assets/ /app/public/assets
 COPY resources/lang /app/resources/lang
 COPY resources/views /app/resources/views
 COPY src/ /app/src
@@ -27,7 +27,7 @@ COPY composer.json LICENSE package.json README.md /app/
 COPY --from=composer /app/vendor/ /app/vendor
 COPY --from=composer /app/composer.lock /app/
 
-RUN rm -f /app/config/config.php
+#RUN rm -f /app/config/config.php
 
 # Build the PHP container
 FROM php:7-fpm-alpine

@@ -1,4 +1,4 @@
-version: "3.6"
+version: "3.3"
 services:
   nginx:
     image: engelsystem-nginx
@@ -8,8 +8,6 @@ services:
     restart: always
     ports:
       - 5000:80
-    volumes:
-      - static:/var/www/
     networks:
       - internal
     depends_on:
@@ -20,17 +18,18 @@ services:
       context: ..
       dockerfile: contrib/Dockerfile
     restart: always
-    ports:
-       - 9100:9000
     environment:
       MYSQL_HOST: database
       MYSQL_USER: engelsystem
       MYSQL_PASSWORD: engelsystem
       MYSQL_DATABASE: engelsystem
-      NO_REPLY_MAIL: helfer@wuerzburg18.de
+      NO_REPLY_EMAIL: helfer@wuerzburg18.de
+      CONTACT_EMAIL: 'mailto:helfer@wuerzburg18.de'
+      MAINTENANCE: 'false'
+      THEME: 0
+      DEFAULT_LOCALE: de_DE.UTF-8
+      FAQ_URL: https://wuerzburg18.de/helfer/
       SMTPHOST: smtp
-    volumes:
-      - static:/var/www/
     networks:
       - internal
       - database
@@ -55,8 +54,8 @@ services:
     networks:
       - mail
 volumes:
-  db:
-  static:
+  db: {}
+  static: {}
 
 networks:
   internal:
