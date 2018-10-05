@@ -48,12 +48,12 @@ function update_ShiftsFilter_timerange(ShiftsFilter $shiftsFilter, $days)
 {
     $start_time = $shiftsFilter->getStartTime();
     if (is_null($start_time)) {
-        $start_time = time();
+        $start_time = 1542841200;
     }
 
     $end_time = $shiftsFilter->getEndTime();
     if ($end_time == null) {
-        $end_time = $start_time + 24 * 60 * 60;
+        $end_time = $start_time + 4*24 * 60 * 60;
     }
 
     $shiftsFilter->setStartTime(check_request_datetime(
@@ -178,9 +178,10 @@ function view_user_shifts()
     $types = load_types();
 
     if (!$session->has('shifts-filter')) {
-        $room_ids = [
-            $rooms[0]['id']
-        ];
+        $room_ids = [];
+	foreach($rooms as $room) {
+		$rooms_ids[] = $room['id'];
+	}	
         $type_ids = array_map('get_ids_from_array', $types);
         $shiftsFilter = new ShiftsFilter(in_array('user_shifts_admin', $privileges), $room_ids, $type_ids);
         $session->set('shifts-filter', $shiftsFilter->sessionExport());
@@ -211,6 +212,16 @@ function view_user_shifts()
     $start_time = date('H:i', $shiftsFilter->getStartTime());
     $end_day = date('Y-m-d', $shiftsFilter->getEndTime());
     $end_time = date('H:i', $shiftsFilter->getEndTime());
+
+    if(!in_array($start_day, $days)) {
+	    $start_day = $days[0];
+	    $start_time = "00:00";
+    }
+    if(!in_array($end_day, $days)) {
+            $end_day = end($days);
+	    $end_time = "23:59";
+	    reset($days);
+    }
 
     if (config('signup_requires_arrival') && !$user['Gekommen']) {
         info(render_user_arrived_hint());
