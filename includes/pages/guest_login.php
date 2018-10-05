@@ -50,8 +50,8 @@ function guest_register()
     $dect = '';
     $mobile = '';
     $mail = '';
-    $email_shiftinfo = false;
-    $email_by_human_allowed = false;
+    $email_shiftinfo = true;
+    $email_by_human_allowed = true;
     $jabber = '';
     $hometown = '';
     $comment = '';
@@ -113,14 +113,6 @@ function guest_register()
             $email_by_human_allowed = true;
         }
 
-        if ($request->has('jabber') && strlen(strip_request_item('jabber')) > 0) {
-            $jabber = strip_request_item('jabber');
-            if (!check_email($jabber)) {
-                $valid = false;
-                $msg .= error(__('Please check your jabber account information.'), true);
-            }
-        }
-
         if ($enable_tshirt_size) {
             if ($request->has('tshirt_size') && isset($tshirt_sizes[$request->input('tshirt_size')])) {
                 $tshirt_size = $request->input('tshirt_size');
@@ -164,31 +156,26 @@ function guest_register()
         }
 
         // Trivia
-        if ($request->has('lastname')) {
-            $lastName = strip_request_item('lastname');
+        if ($request->has('lastname') && strlen(strip_request_item('lastname')) > 0) {
+	    $lastName = strip_request_item('lastname');
+        } else {
+            $valid = false;
+            $msg .= error(_("Please enter your last name."), true);
         }
-        if ($request->has('prename')) {
-            $preName = strip_request_item('prename');
-        }
-        if ($request->has('age') && preg_match('/^\d{1,4}$/', $request->input('age'))) {
-            $age = strip_request_item('age');
-        }
-        if ($request->has('tel')) {
-            $tel = strip_request_item('tel');
-        }
-        if ($request->has('dect')) {
-            if (strlen(strip_request_item('dect')) <= 5) {
-                $dect = strip_request_item('dect');
-            } else {
-                $valid = false;
-                error(__('For dect numbers are only 5 digits allowed.'));
-            }
+        if ($request->has('prename')&& strlen(strip_request_item('prename')) > 0) {
+	    $preName = strip_request_item('prename');
+        } else {
+            $valid = false;
+            $msg .= error(_("Please enter your first name."), true);
         }
         if ($request->has('mobile')) {
             $mobile = strip_request_item('mobile');
         }
-        if ($request->has('hometown')) {
+        if ($request->has('hometown') && strlen(strip_request_item('hometown')) > 0) {
             $hometown = strip_request_item('hometown');
+        } else {
+            $valid = false;
+            $msg .= error(_("Please enter your hometown."), true);
         }
         if ($request->has('comment')) {
             $comment = strip_request_item_nl('comment');
@@ -222,7 +209,7 @@ function guest_register()
                         `api_key`,
                         `got_voucher`
                     )
-                    VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, NULL, ?, FALSE, 0, "", 0)
+                    VALUES  (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), ?, NULL, ?, TRUE, 0, "", 0)
                 ',
                 [
                     config('theme'),
@@ -304,17 +291,7 @@ function guest_register()
                             form_text('nick', __('Nick') . ' ' . entry_required(), $nick)
                         ]),
                         div('col-sm-8', [
-                            form_email('mail', __('E-Mail') . ' ' . entry_required(), $mail),
-                            form_checkbox(
-                                'email_shiftinfo',
-                                __('The engelsystem is allowed to send me an email (e.g. when my shifts change)'),
-                                $email_shiftinfo
-                            ),
-                            form_checkbox(
-                                'email_by_human_allowed',
-                                __('Humans are allowed to send me an email (e.g. for ticket vouchers)'),
-                                $email_by_human_allowed
-                            )
+                            form_email('mail', __('E-Mail') . ' ' . entry_required(), $mail)
                         ])
                     ]),
                     div('row', [
@@ -357,30 +334,20 @@ function guest_register()
                 div('col-md-6', [
                     div('row', [
                         div('col-sm-4', [
-                            form_text('dect', __('DECT'), $dect)
+                            form_text('mobile', __('Mobile (only used for important problems)'), $mobile)
                         ]),
-                        div('col-sm-4', [
-                            form_text('mobile', __('Mobile'), $mobile)
-                        ]),
-                        div('col-sm-4', [
-                            form_text('tel', __('Phone'), $tel)
-                        ])
                     ]),
-                    form_text('jabber', __('Jabber'), $jabber),
                     div('row', [
                         div('col-sm-6', [
-                            form_text('prename', __('First name'), $preName)
+                            form_text('prename', __('First name'). ' ' . entry_required(), $preName)
                         ]),
                         div('col-sm-6', [
-                            form_text('lastname', __('Last name'), $lastName)
+                            form_text('lastname', __('Last name'). ' ' . entry_required(), $lastName)
                         ])
                     ]),
                     div('row', [
-                        div('col-sm-3', [
-                            form_text('age', __('Age'), $age)
-                        ]),
                         div('col-sm-9', [
-                            form_text('hometown', __('Hometown'), $hometown)
+                            form_text('hometown', __('Hometown'). ' ' . entry_required(), $hometown)
                         ])
                     ]),
                     form_info(entry_required() . ' = ' . __('Entry required!'))
