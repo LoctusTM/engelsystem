@@ -47,7 +47,7 @@ function User_settings_view(
                     ),
                     form_text('age', __('Age'), $user_source['Alter']),
                     form_text('tel', __('Phone'), $user_source['Telefon']),
-                    form_text('dect', __('DECT'), $user_source['DECT']),
+                 //   form_text('dect', __('DECT'), $user_source['DECT']),
                     form_text('mobile', __('Mobile'), $user_source['Handy']),
                     form_text('mail', __('E-Mail') . ' ' . entry_required(), $user_source['email']),
                     form_checkbox(
@@ -60,7 +60,7 @@ function User_settings_view(
                         __('Humans are allowed to send me an email (e.g. for ticket vouchers)'),
                         $user_source['email_by_human_allowed']
                     ),
-                    form_text('jabber', __('Jabber'), $user_source['jabber']),
+                    form_text('jabber', __('Telegram'), $user_source['jabber']),
                     form_text('hometown', __('Hometown'), $user_source['Hometown']),
                     $enable_tshirt_size ? form_select(
                         'tshirt_size',
@@ -916,10 +916,10 @@ function render_user_dect_hint()
 {
     global $user;
 
-    if ($user['Gekommen'] == 1 && $user['DECT'] == '') {
-        $text = __('You need to specify a DECT phone number in your settings! If you don\'t have a DECT phone, just enter \'-\'.');
-        return render_profile_link($text, null, 'alert-link');
-    }
+   // if ($user['Gekommen'] == 1 && $user['DECT'] == '') {
+   //     $text = __('You need to specify a DECT phone number in your settings! If you don\'t have a DECT phone, just enter \'-\'.');
+   //     return render_profile_link($text, null, 'alert-link');
+   // }
 
     return null;
 }

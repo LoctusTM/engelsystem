@@ -114,7 +114,7 @@ function AngelType_edit_view($angeltype, $supporter_mode)
                 __('Primary contact person/desk for user questions.')
             ),
             form_text('contact_name', __('Name'), $angeltype['contact_name']),
-            form_text('contact_dect', __('DECT'), $angeltype['contact_dect']),
+           // form_text('contact_dect', __('DECT'), $angeltype['contact_dect']),
             form_text('contact_email', __('E-Mail'), $angeltype['contact_email']),
             form_submit('submit', __('Save'))
         ])
@@ -294,7 +294,7 @@ function AngelType_view_table_headers($angeltype, $supporter, $admin_angeltypes)
     if ($angeltype['requires_driver_license'] && ($supporter || $admin_angeltypes)) {
         return [
             'Nick'                         => __('Nick'),
-            'DECT'                         => __('DECT'),
+            'jabber'                         => __('Telegram'),
             'wants_to_drive'               => __('Driver'),
             'has_car'                      => __('Has car'),
             'has_license_car'              => __('Car'),
@@ -307,7 +307,7 @@ function AngelType_view_table_headers($angeltype, $supporter, $admin_angeltypes)
     }
     return [
         'Nick'    => __('Nick'),
-        'DECT'    => __('DECT'),
+        'jabber'    => __('Telegram'),
         'actions' => ''
     ];
 }
@@ -420,7 +420,7 @@ function AngelType_view_info(
     if (count($members_confirmed) > 0) {
         $members_confirmed[] = [
             'Nick'    => __('Sum'),
-            'DECT'    => count($members_confirmed),
+            'jabber'    => count($members_confirmed),
             'actions' => ''
         ];
     }
@@ -428,7 +428,7 @@ function AngelType_view_info(
     if (count($members_unconfirmed) > 0) {
         $members_unconfirmed[] = [
             'Nick'    => __('Sum'),
-            'DECT'    => count($members_unconfirmed),
+            'jabber'    => count($members_unconfirmed),
             'actions' => ''
         ];
     }

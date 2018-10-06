@@ -219,3 +219,11 @@ function check_email($email)
 {
     return (bool)filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
+function check_telegram($username)
+{
+    if (strlen(trim($username))==0) return true;
+    if (strstr(" ",$username)) return false;
+    else if (strlen($username) < 5 || strlen($username)>33) return false;
+    return true;
+}

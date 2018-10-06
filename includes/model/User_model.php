@@ -344,7 +344,7 @@ function User_validate_jabber($jabber)
         // Empty is ok
         return new ValidationResult(true, '');
     }
-    return new ValidationResult(check_email($jabber), $jabber);
+    return new ValidationResult(check_telegram($jabber), $jabber);
 }
 
 /**
