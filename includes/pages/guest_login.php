@@ -112,6 +112,13 @@ function guest_register()
         if ($request->has('email_by_human_allowed')) {
             $email_by_human_allowed = true;
         }
+        if ($request->has('jabber') && strlen(strip_request_item('jabber')) > 0) {
+            $jabber = strip_request_item('jabber');
+            if (!check_telegram($jabber)) {
+                $valid = false;
+                $msg .= error(__('Please check your telegram account information.'), true);
+            }
+        }
 
         if ($enable_tshirt_size) {
             if ($request->has('tshirt_size') && isset($tshirt_sizes[$request->input('tshirt_size')])) {
