@@ -59,7 +59,7 @@ function admin_user()
         if ($user_source['email_by_human_allowed']) {
             $html .= "  <tr><td>email</td><td>" . '<input type="email" size="40" name="eemail" value="' . $user_source['email'] . '" class="form-control"></td></tr>' . "\n";
         }
-        $html .= "  <tr><td>Telegram</td><td>" . '<input type="email" size="40" name="ejabber" value="' . $user_source['jabber'] . '" class="form-control"></td></tr>' . "\n";
+        $html .= "  <tr><td>Telegram</td><td>" . '<input type="text" size="40" name="ejabber" value="' . $user_source['jabber'] . '" class="form-control"></td></tr>' . "\n";
         $html .= '  <tr><td>Size</td><td>'
             . html_select_key('size', 'eSize', $tshirt_sizes, $user_source['Size'], __('Please select...')) . '</td></tr>' . "\n";
 
