@@ -43,7 +43,7 @@ function user_settings_main($user_source, $enable_tshirt_size, $tshirt_sizes)
         $user_source['jabber'] = $result->getValue();
         if (!$result->isValid()) {
             $valid = false;
-            error(__('Please check your jabber account information.'));
+            error(__('Please check your telegram account information.'));
         }
     }
 

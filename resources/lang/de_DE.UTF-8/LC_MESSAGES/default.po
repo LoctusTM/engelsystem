@@ -1039,8 +1039,8 @@ msgstr "DECT"
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/admin_free.php:122
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:375
 #: /Users/msquare/workspace/projects/engelsystem/includes/view/User_view.php:63
-msgid "Jabber"
-msgstr "Jabber"
+msgid "Telegram"
+msgstr "Telegram"
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/admin_free.php:123
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:313
@@ -1550,8 +1550,8 @@ msgstr "Der Nick &quot;%s&quot; ist zu kurz (Mindestens 2 Zeichen)."
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:126
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/user_settings.php:46
-msgid "Please check your jabber account information."
-msgstr "Bitte überprüfe deine Jabber Account Eingabe."
+msgid "Please check your telegram account information."
+msgstr "Bitte überprüfe deine Telegram Account Eingabe."
 
 #: /Users/msquare/workspace/projects/engelsystem/includes/pages/guest_login.php:135
 msgid "Please select your shirt size."

@@ -48,7 +48,8 @@ function update_ShiftsFilter_timerange(ShiftsFilter $shiftsFilter, $days)
 {
     $start_time = $shiftsFilter->getStartTime();
     if (is_null($start_time)) {
-        $start_time = 1542841200;
+        // start with first day of ZaPF or if later, use current time
+        $start_time = time()>1542841200?time():1542841200;
     }
 
     $end_time = $shiftsFilter->getEndTime();

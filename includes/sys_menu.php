@@ -87,7 +87,7 @@ function make_navigation()
         'user_meetings'  => __('Meetings'),
         'user_shifts'    => __('Shifts'),
         'angeltypes'     => __('Angeltypes'),
-        'user_questions' => __('Ask the Heaven'),
+       // 'user_questions' => __('Ask the Heaven'),
     ];
 
     foreach ($pages as $menu_page => $title) {
@@ -104,7 +104,7 @@ function make_navigation()
         'admin_active'       => __('Active angels'),
         'admin_user'         => __('All Angels'),
         'admin_free'         => __('Free angels'),
-        'admin_questions'    => __('Answer questions'),
+     //   'admin_questions'    => __('Answer questions'),
         'shifttypes'         => __('Shifttypes'),
         'admin_shifts'       => __('Create shifts'),
         'admin_rooms'        => __('Rooms'),

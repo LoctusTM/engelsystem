@@ -119,7 +119,7 @@ function admin_free()
             'name'        => __('Nick'),
             'shift_state' => '',
             'dect'        => __('DECT'),
-            'jabber'      => __('Jabber'),
+            'jabber'      => __('Telegram'),
             'email'       => __('E-Mail'),
             'actions'     => ''
         ], $free_users_table)
