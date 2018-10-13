@@ -181,7 +181,7 @@ function view_user_shifts()
     if (!$session->has('shifts-filter')) {
         $room_ids = [];
 	foreach($rooms as $room) {
-		$rooms_ids[] = $room['id'];
+		$room_ids[] = $room['id'];
 	}	
         $type_ids = array_map('get_ids_from_array', $types);
         $shiftsFilter = new ShiftsFilter(in_array('user_shifts_admin', $privileges), $room_ids, $type_ids);
